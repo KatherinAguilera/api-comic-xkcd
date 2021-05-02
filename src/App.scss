@@ -1,0 +1,212 @@
+/*=====================VARIABLES===========================*/
+
+$primary: #0e6ba8;
+$primary-light: #a6e1fa;
+$primary-dark: #00072d;
+$grayscale-white: #ffffff;
+
+body{
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: $primary-dark;
+  margin: 0;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*=====================HEADER===========================*/
+.header{
+  height: 100px;
+  background: $primary;
+  position: relative;
+  @extend .flex;
+  margin-bottom: 32px; 
+  h1{
+    font-family: 'Original Surfer', cursive;
+    color: $grayscale-white;
+    font-size: 30px;
+    text-align: center;
+    @media (max-width: 600px){
+      font-size: 20px;
+    }
+  }
+  &__waves{
+    position: absolute;
+    bottom: 5px;
+    height: 527px;
+    width: 100%;
+    overflow: hidden;
+    .wave {
+      position: absolute;
+      left: -180px;
+      bottom: 0;
+      width: 2402px;
+      height: 257px;
+      background: url(./assets/waves.png) center bottom no-repeat;
+      animation: 5s wave ease-in-out infinite alternate;
+    }
+    .wave.a {
+      background-position: 0 -854px;
+    }
+    .wave.b {
+      background-position: 0 -427px;
+      animation-delay: .6s;
+    }
+    .wave.c {
+      background-position: 0 0;
+      animation-delay: 1.2s;
+    }
+  }
+}
+
+/*=====================CONTENT===========================*/
+
+  .content{
+    h2{
+      color: $grayscale-white;
+      text-transform: capitalize;
+      border: double 3px;
+      padding: .25rem .8rem;
+      @media (max-width: 600px){
+        font-size: 1.2rem;
+        margin-right: .5rem;
+      }
+    }
+    @extend .flex;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 1.5rem;
+    &__img{
+      background-color: $grayscale-white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: -1px 12px 8px 0 rgb(0 0 0 / 15%);
+      margin-bottom: 1.2rem;
+      @media (max-width: 768px){
+        margin: 1rem;
+      }
+      img{
+        max-width: 100%;
+      }
+    }
+    &__title{
+      @extend .flex;
+      justify-content: space-between;
+      width: 30%;
+      @media (max-width: 768px){
+        width: 80%;
+      }
+      button{
+        text-decoration: none;
+        padding: .8rem;
+        color: $grayscale-white;
+        border-radius: .25rem;
+        border: 6px solid $primary-light;
+        background-color: $primary;
+        outline: 0;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        transition: .8s;
+        font-weight: 600;
+        &:hover{
+          text-decoration: none;
+          color: $primary-dark;
+          background: $primary-light;
+          border-top: 6px solid $primary;
+          border-bottom: 0;
+          cursor: pointer;
+        }
+      }
+    }
+    &__description{
+      color: $grayscale-white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      background-color: $primary;
+      padding: 1rem;
+      border-radius: 1.5rem 0;
+      max-width: 50%;
+      opacity: .8;
+      @media (max-width: 768px){
+        max-width: 80%;
+      }
+    }
+  }
+/*=====================SPINNER===========================*/
+
+  .spinner {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    margin: 100px auto;
+    &--double-bounce1, &--double-bounce2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: $primary-light;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+      animation: sk-bounce 2.0s infinite ease-in-out;
+    }
+    &--double-bounce2 {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
+  }
+/*=====================RAITING===========================*/
+.raiting{
+  @extend .flex;
+  svg{
+    margin-right: 1rem;
+    width: 3rem;
+    cursor:pointer;
+  }
+}
+/*=====================ERROR===========================*/
+.error{
+  @extend .flex;
+  p{
+    color: $grayscale-white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: .25rem;
+    background-color: #0e6ba8;
+    padding: 1rem;
+    border-radius: 1rem 0;
+  }
+}
+
+/*=====================ANIMACIONES===========================*/
+
+@keyframes wave {
+  0% {
+    transform: translate(0 , 0);
+  }
+  50% {
+    transform: translate(-80px, 30px);
+  }
+  100% {
+    transform: translate(160px, -60px);
+  }
+}
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
